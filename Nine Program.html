@@ -1,0 +1,138 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Canvas and SVG Example</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f0f4f8;
+            margin: 20px;
+        }
+
+        h1, h2 {
+            color: #123c69;
+        }
+
+        canvas, .logo {
+            background-color: white;
+            border: 2px solid #123c69;
+            border-radius: 8px;
+            margin: 10px;
+        }
+
+        .logo {
+            display: inline-block;
+            padding: 10px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>HTML5 Canvas and SVG Demonstration</h1>
+
+    <h2>1. Canvas Drawing</h2>
+
+    <canvas id="myCanvas" width="500" height="350">
+        Your browser does not support HTML5 Canvas.
+    </canvas>
+
+    <script>
+        // Get the canvas and drawing context
+        const canvas = document.getElementById("myCanvas");
+        const ctx = canvas.getContext("2d");
+
+        // Draw a rectangle
+        ctx.fillStyle = "skyblue";
+        ctx.fillRect(30, 30, 150, 80);
+
+        ctx.strokeStyle = "blue";
+        ctx.lineWidth = 2;
+        ctx.strokeRect(30, 30, 150, 80);
+
+        // Draw a circle
+        ctx.beginPath();
+        ctx.arc(280, 70, 40, 0, 2 * Math.PI);
+        ctx.fillStyle = "orange";
+        ctx.fill();
+        ctx.strokeStyle = "red";
+        ctx.stroke();
+
+        // Draw a line
+        ctx.beginPath();
+        ctx.moveTo(40, 170);
+        ctx.lineTo(450, 170);
+        ctx.strokeStyle = "green";
+        ctx.lineWidth = 4;
+        ctx.stroke();
+
+        // Draw text
+        ctx.font = "bold 24px Arial";
+        ctx.fillStyle = "purple";
+        ctx.fillText("Welcome to Our College!", 40, 230);
+
+        ctx.font = "16px Arial";
+        ctx.fillStyle = "black";
+        ctx.fillText("Rectangle, Circle, Line and Text", 40, 270);
+    </script>
+
+    <h2>2. SVG College Logo</h2>
+
+    <div class="logo">
+        <svg width="220" height="220"
+             viewBox="0 0 220 220"
+             xmlns="http://www.w3.org/2000/svg"
+             role="img"
+             aria-labelledby="logoTitle">
+
+            <title id="logoTitle">College emblem</title>
+
+            <!-- Outer circle -->
+            <circle cx="110" cy="110" r="100"
+                    fill="#123c69" stroke="gold" stroke-width="5"/>
+
+            <!-- Inner circle -->
+            <circle cx="110" cy="110" r="78"
+                    fill="white" stroke="gold" stroke-width="3"/>
+
+            <!-- Open book -->
+            <path d="M55 85 Q80 75 110 95
+                     Q140 75 165 85
+                     L165 135 Q140 125 110 145
+                     Q80 125 55 135 Z"
+                  fill="#87ceeb" stroke="#123c69" stroke-width="3"/>
+
+            <path d="M110 95 L110 145"
+                  stroke="#123c69" stroke-width="3"/>
+
+            <!-- College name -->
+            <text x="110" y="48"
+                  font-size="14"
+                  font-weight="bold"
+                  fill="white"
+                  text-anchor="middle">COLLEGE</text>
+
+            <!-- Graduation cap -->
+            <path d="M80 72 L110 60 L140 72 L110 84 Z"
+                  fill="gold" stroke="#123c69" stroke-width="2"/>
+
+            <path d="M135 74 L135 88"
+                  stroke="gold" stroke-width="3"/>
+
+            <!-- Year -->
+            <text x="110" y="174"
+                  font-size="15"
+                  font-weight="bold"
+                  fill="#123c69"
+                  text-anchor="middle">EST. 2000</text>
+        </svg>
+    </div>
+
+
+</body>
+</html>

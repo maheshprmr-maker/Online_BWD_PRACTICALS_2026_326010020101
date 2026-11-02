@@ -1,0 +1,138 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>College Information</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            background-color: #f2f5f9;
+            color: #333;
+        }
+
+        header {
+            background-color: #123c69;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+
+        main {
+            max-width: 850px;
+            margin: 20px auto;
+            padding: 20px;
+        }
+
+        section {
+            background: white;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+        }
+
+        button {
+            background-color: #123c69;
+            color: white;
+            padding: 10px 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        iframe {
+            width: 100%;
+            height: 350px;
+            border: 0;
+            border-radius: 8px;
+        }
+
+        footer {
+            text-align: center;
+            background-color: #123c69;
+            color: white;
+            padding: 12px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <h1>ABC College of Science and Technology</h1>
+        <p>Knowledge • Innovation • Excellence</p>
+    </header>
+
+    <main>
+        <section>
+            <h2>About Our College</h2>
+            <p>
+                ABC College provides quality education in science,
+                commerce, computer applications, and technology.
+                Our campus offers modern classrooms, laboratories,
+                a library, and sports facilities.
+            </p>
+        </section>
+
+        <section>
+            <h2>College Location</h2>
+            <p><strong>Address:</strong> Sayajigunj, Vadodara, Gujarat, India</p>
+
+            <button onclick="getLocation()">
+                Find My Current Location
+            </button>
+
+            <p id="location">Your location will appear here.</p>
+        </section>
+
+        <section>
+            <h2>College Map</h2>
+            <p>Explore the Vadodara area on the map below.</p>
+
+            <iframe
+                src="https://www.google.com/maps?q=Sayajigunj,Vadodara,Gujarat,India&output=embed"
+                title="Map showing Sayajigunj, Vadodara"
+                loading="lazy"
+                allowfullscreen>
+            </iframe>
+        </section>
+    </main>
+
+   
+    <script>
+        function getLocation() {
+            const output = document.getElementById("location");
+
+            if (navigator.geolocation) {
+                output.textContent = "Getting your location...";
+
+                navigator.geolocation.getCurrentPosition(
+                    function(position) {
+                        const latitude = position.coords.latitude;
+                        const longitude = position.coords.longitude;
+
+                        output.innerHTML =
+                            "Latitude: " + latitude + "<br>" +
+                            "Longitude: " + longitude + "<br>" +
+                            '<a href="https://www.google.com/maps?q=' +
+                            latitude + ',' + longitude +
+                            '" target="_blank" rel="noopener">' +
+                            'View my location on Google Maps</a>';
+                    },
+                    function(error) {
+                        output.textContent =
+                            "Unable to get location. Please allow location access and try again.";
+                    }
+                );
+            } else {
+                output.textContent =
+                    "Geolocation is not supported by this browser.";
+            }
+        }
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,117 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student Eligibility Checker</title>
+
+    <style>
+        body {
+            font-family: Arial;
+            background: #e3f2fd;
+            text-align: center;
+            padding: 40px;
+        }
+
+        .container {
+            background: white;
+            width: 350px;
+            margin: auto;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 0 10px gray;
+        }
+
+        input {
+            width: 90%;
+            padding: 10px;
+            margin: 10px;
+            border: 1px solid gray;
+            border-radius: 5px;
+        }
+
+        button {
+            background: blue;
+            color: white;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: darkblue;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <h2>Student Eligibility Checker</h2>
+
+    <input type="number" id="age"
+           placeholder="Enter Student Age">
+
+    <input type="number" id="attendance"
+           placeholder="Enter Attendance (%)">
+
+    <input type="number" id="marks"
+           placeholder="Enter Marks">
+
+    <br><br>
+
+    <button onclick="checkEligibility()">
+        Check Eligibility
+    </button>
+
+</div>
+
+<script>
+
+function checkEligibility() {
+
+    // Get student details
+    let age = Number(document.getElementById("age").value);
+    let attendance = Number(document.getElementById("attendance").value);
+    let marks = Number(document.getElementById("marks").value);
+
+    // Validate input
+    if (
+        document.getElementById("age").value === "" ||
+        document.getElementById("attendance").value === "" ||
+        document.getElementById("marks").value === ""
+    ) {
+        alert("Please enter all student details.");
+    }
+
+    else if (
+        !Number.isFinite(age) ||
+        !Number.isFinite(attendance) ||
+        !Number.isFinite(marks) ||
+        age <= 0 ||
+        attendance < 0 || attendance > 100 ||
+        marks < 0 || marks > 100
+    ) {
+        alert("Please enter valid details.");
+    }
+
+    // Check eligibility
+    else if (age >= 16 && attendance >= 75 && marks >= 40) {
+
+        alert("Congratulations!\nStudent is ELIGIBLE for Examination / Admission.");
+
+    }
+
+    else {
+
+        alert("Sorry!\nStudent is NOT ELIGIBLE for Examination / Admission.");
+
+    }
+
+}
+
+</script>
+
+</body>
+</html>

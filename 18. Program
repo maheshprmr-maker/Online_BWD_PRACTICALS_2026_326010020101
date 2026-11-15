@@ -1,0 +1,150 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Subject Information</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #e3f2fd;
+            text-align: center;
+            padding: 40px;
+        }
+
+        .container {
+            background: white;
+            width: 400px;
+            margin: auto;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 0 10px gray;
+        }
+
+        select {
+            width: 90%;
+            padding: 12px;
+            margin: 15px;
+            border: 1px solid gray;
+            border-radius: 5px;
+        }
+
+        #info {
+            background: #f1f8e9;
+            padding: 15px;
+            margin-top: 20px;
+            border-radius: 8px;
+            color: #333;
+        }
+
+        h2 {
+            color: #1565c0;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <h2>Student Subject Information</h2>
+
+    <p>Select a Subject:</p>
+
+    <select id="subject" onchange="displaySubject()">
+
+        <option value="">-- Select Subject --</option>
+        <option value="0">C Programming</option>
+        <option value="1">Web Designing</option>
+        <option value="2">Mathematics</option>
+        <option value="3">Computer Fundamentals</option>
+        <option value="4">Database Management</option>
+
+    </select>
+
+    <div id="info">
+        <h3>Subject Details</h3>
+        <p>Please select a subject to view information.</p>
+    </div>
+
+</div>
+
+<script>
+
+// Create an array of subjects
+let subjects = [
+
+    {
+        name: "C Programming",
+        code: "BCA101",
+        duration: "3 Months",
+        description: "Learn C language, variables, loops, arrays and functions."
+    },
+
+    {
+        name: "Web Designing",
+        code: "BCA102",
+        duration: "3 Months",
+        description: "Learn HTML, CSS, JavaScript and Bootstrap."
+    },
+
+    {
+        name: "Mathematics",
+        code: "BCA103",
+        duration: "4 Months",
+        description: "Learn algebra, statistics and mathematical concepts."
+    },
+
+    {
+        name: "Computer Fundamentals",
+        code: "BCA104",
+        duration: "3 Months",
+        description: "Learn computer hardware, software and operating systems."
+    },
+
+    {
+        name: "Database Management",
+        code: "BCA105",
+        duration: "4 Months",
+        description: "Learn database concepts, SQL and data management."
+    }
+
+];
+
+// Create a function to display subject details
+function displaySubject() {
+
+    // Get selected subject index
+    let index = document.getElementById("subject").value;
+
+    let output = document.getElementById("info");
+
+    // Check subject selection
+    if (index === "") {
+
+        output.innerHTML =
+            "<h3>Subject Details</h3>" +
+            "<p>Please select a subject.</p>";
+
+    }
+
+    else {
+
+        // Get subject information from array
+        let s = subjects[index];
+
+        // Display subject information
+        output.innerHTML =
+            "<h3>" + s.name + "</h3>" +
+            "<p><b>Subject Code:</b> " + s.code + "</p>" +
+            "<p><b>Duration:</b> " + s.duration + "</p>" +
+            "<p><b>Description:</b> " + s.description + "</p>";
+
+    }
+
+}
+
+</script>
+
+</body>
+</html>
